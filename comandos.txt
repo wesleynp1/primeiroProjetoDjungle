@@ -1,0 +1,5 @@
+#para criar um projeto
+django-admin startproject MeuSiteDjango .
+
+#para rodar o servidor
+python manage.py runserver
