@@ -7,7 +7,7 @@ python manage.py runserver
 #ao alterar o model, use este comando para aplicar as alterações no database.
 #OBS: talvez seja necessario excluir a pasta 'migrations',
 #principalmente se mexeu numa chave estrangeira para não dar erro de compatibilidade
-python manage.py makemigrations <model>
+python manage.py makemigrations <app>
 
 #Para de fato aplicar as migrações criadas no comando anterior para o banco de dados use:
 python manage.py migrate
