@@ -20,3 +20,10 @@ python manage.py shell
 
 #Para criar a conta de admin
 python manage.py createsuperuser
+
+#para realizar testes no shell use
+>>> from django.test.utils import setup_test_environment
+>>> setup_test_environment()
+>>> from django.test import Client
+>>> cliente = Client()
+#divirta-se :)
