@@ -36,6 +36,6 @@ function formatarDinheiro(){
  * */
 function formatarCampoPrecoParaSubmit(inputs){
     for(const input of inputs) {
-        input.value = input.value.replace(",", ".").replace("R$ ", "");
+        input.value = input.value.replace(".","").replace(",", ".").replace("R$ ", "");
     }
 }
