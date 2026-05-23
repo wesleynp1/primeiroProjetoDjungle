@@ -6,15 +6,15 @@ from django.shortcuts import render, redirect
 from django.http import Http404
 from django.core.exceptions import PermissionDenied
 
-from produtos.models import Produto, Cliente
+from loja.models import Produto, Cliente
 
 
 def index(request):
     produtos = Produto.objects.all()
     clientes = Cliente.objects.all()
 
-    #template = loader.get_template('produtos/index.html')# pega o template
-    #return HttpResponse(template.render({ 'produtos': produtos }))
+    #template = loader.get_template('loja/index.html')# pega o template
+    #return HttpResponse(template.render({ 'loja': loja }))
 
     return render(request, 'produtos/index.html', {"produtos": produtos, "clientes": clientes})
 
@@ -23,9 +23,9 @@ def add(request):
         return render(request, 'produtos/add.html')
     elif (request.method == 'POST'):
         Produto.objects.create(nome=request.POST["nome"], preco=request.POST["preco"])
-        return redirect("produtos:index")
+        return redirect("loja:index")
     else:
-        return redirect("produtos:index")
+        return redirect("loja:index")
 
 def delete_form(request, produto_id):
     produto_para_deletar = Produto.objects.filter(id=produto_id).first()
@@ -34,7 +34,6 @@ def delete_form(request, produto_id):
         raise Http404
     else:
         return render(request, "produtos/delete.html", {"produto": produto_para_deletar})
-
 def delete(request, produto_id):
     produto_para_deletar = Produto.objects.filter(id=produto_id).first()
 
@@ -42,7 +41,7 @@ def delete(request, produto_id):
         raise Http404
     else:
         produto_para_deletar.delete()
-        return redirect("produtos:index")
+        return redirect("loja:index")
 
 def edit_form(request, produto_id):
     produto = Produto.objects.filter(id=produto_id).first()
@@ -56,7 +55,8 @@ def edit(request, produto_id):
         produto_para_editar.nome = request.POST["nome"]
         produto_para_editar.preco = request.POST["preco"]
         produto_para_editar.save()
-        return redirect("produtos:index")
+        return redirect("loja:index")
+
 def detalhe(request, produto_id):
     try:
         produto = Produto.objects.filter(id=produto_id).first()

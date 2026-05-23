@@ -21,6 +21,6 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('produtos/',include("produtos.urls")),#add para incluir os URL's da aplicação "produto"
+    path('loja/', include("loja.urls")),#add para incluir os URL's da aplicação "produto"
     path("", views.index, name="index"),
 ]+debug_toolbar_urls()
