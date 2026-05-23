@@ -16,11 +16,11 @@ def index(request):
     #template = loader.get_template('loja/index.html')# pega o template
     #return HttpResponse(template.render({ 'loja': loja }))
 
-    return render(request, 'produtos/index.html', {"produtos": produtos, "clientes": clientes})
+    return render(request, 'loja/index.html', {"produtos": produtos, "clientes": clientes})
 
 def add(request):
     if(request.method == 'GET'):
-        return render(request, 'produtos/add.html')
+        return render(request, 'loja/add.html')
     elif (request.method == 'POST'):
         Produto.objects.create(nome=request.POST["nome"], preco=request.POST["preco"])
         return redirect("loja:index")
@@ -33,7 +33,7 @@ def delete_form(request, produto_id):
     if produto_para_deletar is None:
         raise Http404
     else:
-        return render(request, "produtos/delete.html", {"produto": produto_para_deletar})
+        return render(request, "loja/delete.html", {"produto": produto_para_deletar})
 def delete(request, produto_id):
     produto_para_deletar = Produto.objects.filter(id=produto_id).first()
 
@@ -45,7 +45,7 @@ def delete(request, produto_id):
 
 def edit_form(request, produto_id):
     produto = Produto.objects.filter(id=produto_id).first()
-    return render(request, "produtos/edit.html", {"produto": produto})
+    return render(request, "loja/edit.html", {"produto": produto})
 def edit(request, produto_id):
     produto_para_editar = Produto.objects.filter(id=request.POST["id"]).first()
 
@@ -60,6 +60,6 @@ def edit(request, produto_id):
 def detalhe(request, produto_id):
     try:
         produto = Produto.objects.filter(id=produto_id).first()
-        return render(request, 'produtos/detalhe.html', {"produto": produto})
+        return render(request, 'loja/detalhe.html', {"produto": produto})
     except Produto.DoesNotExist:
         raise Http404("Desculpe, não temos esse produto")
