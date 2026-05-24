@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'loja.apps.ProdutosConfig',
+    'loja.apps.LojaConfig',
+    'vendas.apps.VendasConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,7 +58,11 @@ ROOT_URLCONF = 'MeuSiteDjango.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            "templates/",
+            "loja/templates/loja/",
+            "vendas/templates/vendas"
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

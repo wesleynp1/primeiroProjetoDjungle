@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+    <h2 class="text-center">Deletar este produto?</h2>
+
+    <form action="{%  url "vendas:delete" venda.id %}" method="post" id="formularioDeleteVenda" class="d-flex align-items-center flex-column">
+        <p class="center"> Excluir de {{ venda.cliente.nome }} que comprou {{ venda.quantidade }} {{ venda.produto.nome }}(s)?</p>
+        
+        <div>
+            <input type="submit" value="DELETAR" class="btn btn-danger">
+        </div>
+
+        <a href="{% url "vendas:index" %}" class="btn btn-primary mt-4">voltar</a>
+        
+        {% csrf_token %}
+    </form>
+
+{% endblock %}

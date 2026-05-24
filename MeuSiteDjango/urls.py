@@ -23,4 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('loja/', include("loja.urls")),#add para incluir os URL's da aplicação "produto"
     path("", views.index, name="index"),
+    path("vendas/",include("vendas.urls")),
 ]+debug_toolbar_urls()

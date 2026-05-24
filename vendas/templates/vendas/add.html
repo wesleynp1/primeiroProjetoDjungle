@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Vendas{% endblock %}
+
+{% block content %}
+    <form method="POST" action="{% url 'vendas:add' %}" class="d-flex flex-column p-1 m-1">
+
+        <div class="mb-3">
+            <label for="produto">Produto</label>
+            <select name="produto" id="produto" class="form-control">
+            {% for produto in produtos %}
+                <option value="{{ produto.id }}">{{ produto.nome }}</option>
+            {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="cliente">Clientes</label>
+            <select name="cliente" id="cliente" class="form-control">
+            {% for cliente in clientes %}
+                <option value="{{ cliente.cpf }}">{{ cliente.nome }}</option>
+            {% endfor %}
+            </select>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="quantidade" class="form-label">quantidade</label>
+            <input type="number" name="quantidade" placeholder="quantidade"  class="form-control" id="quantidade" required>
+        </div>
+
+        {% csrf_token %}
+
+        <input type="submit" value="REGISTRAR" class="btn btn-primary">
+    </form>
+{% endblock %}
