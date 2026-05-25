@@ -29,3 +29,9 @@ python manage.py createsuperuser
 >>> from django.test import Client
 >>> cliente = Client()
 #divirta-se :)
+
+#para migrar para o postgreSQL é necessário o seguinte pacote:
+pip install psycopg2-binary
+
+#para usar arquivo .env instale
+pip install python-dotenv
