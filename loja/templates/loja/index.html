@@ -4,7 +4,6 @@
 {% block content %}
     <h2 class="text-center">Produtos:</h2>
     <div class="d-flex justify-content-center m-4">
-
         <table class="table table-dark">
             <thead>
                 <tr>
@@ -17,14 +16,14 @@
             <tbody>
                 {% for produto in produtos %}
                     <tr>
-                        <td> <a href={% url "loja:detalhe" produto.id %}> {{ produto.nome }}</a> </td>
+                        <td> <a href="{% url 'loja:detalhe' produto.id %}"> {{ produto.nome }}</a> </td>
                         <td>{{ produto.preco_formatado }}</td>
-                        <td> <a href="{% url "loja:delete_form" produto.id %}" class="btn btn-danger"> EXCLUIR</a> </td>
-                        <td> <a href="{% url "loja:edit_form" produto.id %}" class="btn btn-primary"> EDITAR</a> </td>
+                        <td> <a href="{% url 'loja:delete_form' produto.id %}" class="btn btn-danger"> EXCLUIR</a> </td>
+                        <td> <a href="{% url 'loja:edit_form' produto.id %}" class="btn btn-primary"> EDITAR</a> </td>
                     </tr>
                 {% endfor %}
                 <tr>
-                    <td colspan="4"> <a href={% url "loja:add" %}>CADASTRAR NOVO PRODUTO</a> </td>
+                    <td colspan="4"> <a href="{% url 'loja:add' %}">CADASTRAR NOVO PRODUTO</a> </td>
                 </tr>
             </tbody>
         </table>
@@ -38,6 +37,8 @@
                 <th>NOME</th>
                 <th>CPF</th>
                 <th>TELEFONE</th>
+                <th>EXCLUIR</th>
+                <th>EDITAR</th>
             </tr>
             </thead>
             <tbody>
@@ -45,9 +46,14 @@
                 <tr>
                     <td>{{ cliente.nome }}</td>
                     <td>{{ cliente.cpf }}</td>
-                    <td> <a href="https://wa.me/{{ cliente.telefone }}" target="_blank"> {{ cliente.telefone }}</a> </td>
+                    <td> <a href="https://wa.me/55{{ cliente.telefone }}" target="_blank"> {{ cliente.telefone }}</a> </td>
+                    <td> <a href="{% url 'clientes:delete_form' cliente.cpf %}" class="btn btn-danger"> EXCLUIR</a> </td>
+                    <td> <a href="{% url 'clientes:edit_form' cliente.cpf %}" class="btn btn-primary"> EDITAR</a> </td>
                 </tr>
             {% endfor %}
+                <tr>
+                    <td colspan="5"> <a href="{% url 'clientes:add_form' %}">CADASTRAR NOVO CLIENTE</a> </td>
+                </tr>
             </tbody>
         </table>
     </div>

@@ -35,3 +35,6 @@ pip install psycopg2-binary
 
 #para usar arquivo .env instale
 pip install python-dotenv
+
+#quando realizar testes e receber um acess denied use
+ALTER USER your_django_user CREATEDB;

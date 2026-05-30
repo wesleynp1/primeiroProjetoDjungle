@@ -10,8 +10,5 @@ class Produto(models.Model):
     def preco_formatado(self):
         return formatBRL.preco_formatado(self.preco)
 
-class Cliente(models.Model):
-    nome = models.CharField(max_length=100)
-    cpf  = models.CharField(max_length=11, primary_key=True)
-    telefone = models.CharField(max_length=13,null=True, blank=True)
+
 

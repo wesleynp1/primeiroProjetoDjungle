@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Venda
-from loja.models import Cliente, Produto
+from loja.models import Produto
+from clientes.models import Cliente
 
 def index(request):
     return render(request,"vendas/index.html",{"vendas" : Venda.objects.all()})

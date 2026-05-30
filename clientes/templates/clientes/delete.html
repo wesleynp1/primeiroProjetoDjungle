@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+    <h2 class="text-center">Deletar este cliente?</h2>
+
+    <form action="{%  url "clientes:delete" cliente.cpf %}" method="post" id="formularioDelete" class="d-flex align-items-center flex-column">
+        <p class="center"> Excluir cliente {{ cliente.nome }}?</p>
+        
+        <div>
+            <input type="submit" value="DELETAR" class="btn btn-danger">
+        </div>
+
+        <a href="{% url "loja:index" %}" class="btn btn-primary mt-4">voltar</a>
+        
+        {% csrf_token %}
+    </form>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Vendas{% endblock %}
+
+{% block content %}
+    <h2>Edição do Cliente {{ cliente.nome }}</h2>
+
+    <form method="POST" action="{% url 'clientes:edit' cliente.cpf %}" class="d-flex flex-column p-1 m-1">
+
+        <div>
+            <label for="cpf" class="form-label">CPF</label>
+            <input type="text" class="form-control" id="cpf" name="cpf" value="{{ cliente.cpf }}" disabled>
+        </div>
+
+        <div class="mb-3">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" value="{{ cliente.nome }}" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="telefone">Telefone</label>
+            <input type="text" name="telefone" id="telefone"  value="{{ cliente.telefone }}" class="form-control" maxlength="11" pattern="[0-9]{11}">
+        </div>
+
+        {% csrf_token %}
+
+        <input type="submit" value="REGISTRAR" class="btn btn-primary">
+    </form>
+    <a href="{% url 'loja:index' %}">Voltar</a>
+{% endblock %}

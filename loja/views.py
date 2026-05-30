@@ -4,9 +4,9 @@ from django.shortcuts import render, redirect
 #from django.shortcuts import render
 #from django.http import HttpResponse
 from django.http import Http404
-from django.core.exceptions import PermissionDenied
 
-from loja.models import Produto, Cliente
+from loja.models import Produto
+from clientes.models import Cliente
 
 
 def index(request):

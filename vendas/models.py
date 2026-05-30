@@ -1,6 +1,6 @@
 from django.db import models
 from loja.models import Produto
-from loja.models import Cliente
+from clientes.models import Cliente
 from wnp.formatBRL import formatBRL
 
 # Create your models here.

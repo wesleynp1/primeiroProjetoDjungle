@@ -7,3 +7,7 @@
 th,td{
     text-align: center;
 }
+
+.form-control:disabled{
+    color: #707070;
+}

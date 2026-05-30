@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-jpqwuzof=jrnl37p8snua3p@l7&*h%qoslftc@i9wzfoy(5gv%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["192.168.1.8","127.0.0.1"]
 
 
 # Application definition
@@ -37,6 +37,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'loja.apps.LojaConfig',
     'vendas.apps.VendasConfig',
+    'clientes.apps.ClientesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -92,6 +93,9 @@ DATABASES = {
         'PASSWORD': os.getenv('DJANGO_DATABASE_PASSWORD'),
         'HOST': '',
         'PORT': '5432',
+        'TEST':{
+            'NAME': 'test_db',
+        }
     }
 }
 
